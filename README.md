@@ -1,46 +1,54 @@
-# Saveurs du Bout du Monde
+export interface Recipe {
+  id: string;
+  name: string;
+  country: string;
+  continent: string;
+  image: string;
+  prepTime: number;
+  cookTime: number;
+  servings: number;
+  difficulty: 'facile' | 'moyen' | 'difficile';
+  category: 'entree' | 'soupe' | 'salade' | 'plat-principal' | 'dessert' | 'viennoiserie' | 'boisson' | 'street-food';
+  tags: string[];
+  ingredients: Ingredient[];
+  steps: string[];
+  tips: string[];
+  nutrition: NutritionInfo;
+  history: string;
+  presentation: string;
+  similar: string[];
+  rating: number;
+  reviews: number;
+  description: string;
+}
 
-🌍 Un site de recettes internationales authentiques des quatre coins de la planète.
+export interface Ingredient {
+  name: string;
+  amount: string;
+  unit: string;
+}
 
-Découvrez plus de 100 recettes authentiques provenant de tous les continents avec une expérience utilisateur premium et immersive.
+export interface NutritionInfo {
+  calories: number;
+  protein: number;
+  carbs: number;
+  fat: number;
+  fiber: number;
+}
 
-## Caractéristiques
+export interface FilterOptions {
+  countries: string[];
+  continents: string[];
+  categories: string[];
+  difficulty: string[];
+  maxPrepTime: number;
+  tags: string[];
+  searchQuery: string;
+}
 
-- 🍽️ Plus de 100 recettes internationales authentiques
-- 🌐 Carte interactive du monde
-- 🔍 Recherche avancée avec filtres
-- 🌙 Mode sombre complet
-- 🌍 Support multilingue (FR/EN/ES)
-- 📱 Design responsive (mobile, tablette, ordinateur)
-- ⭐ Système de notation et favoris
-- 🎨 Design premium avec animations élégantes
-- ♿ Accessible et SEO optimisé
-
-## Stack Technique
-
-- **React 18** avec TypeScript
-- **Tailwind CSS** pour le design
-- **Zustand** pour la gestion d'état
-- **Framer Motion** pour les animations
-- **i18next** pour l'internationalisation
-- **Vite** comme bundler
-
-## Installation
-
-```bash
-npm install
-npm run dev
-```
-
-Le site ouvrira automatiquement sur http://localhost:3000
-
-## Build pour la production
-
-```bash
-npm run build
-npm run preview
-```
-
-## License
-
-MIT
+export interface User {
+  favorites: string[];
+  ratings: Record<string, number>;
+  theme: 'light' | 'dark';
+  language: 'fr' | 'en' | 'es';
+}
